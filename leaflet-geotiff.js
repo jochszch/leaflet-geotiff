@@ -19,7 +19,7 @@ L.LeafletGeotiff = L.ImageOverlay.extend({
 		band: 0,
 		image: 0,
 		renderer: null,
-    pane: 'overlayPane'
+		pane: 'overlayPane'
 	},
 	
     initialize: function (url, options) { 
