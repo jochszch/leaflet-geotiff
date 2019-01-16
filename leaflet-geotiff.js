@@ -18,7 +18,8 @@ L.LeafletGeotiff = L.ImageOverlay.extend({
 		arrowSize: 20,
 		band: 0,
 		image: 0,
-		renderer: null
+		renderer: null,
+    pane: 'overlayPane'
 	},
 	
     initialize: function (url, options) { 
@@ -49,7 +50,7 @@ L.LeafletGeotiff = L.ImageOverlay.extend({
             this._initImage();
         }
 
-        map._panes.overlayPane.appendChild(this._image);
+        map._panes[this.options.pane].appendChild(this._image);
 
         map.on('moveend', this._reset, this);
         
@@ -60,7 +61,7 @@ L.LeafletGeotiff = L.ImageOverlay.extend({
         this._reset();
     },
     onRemove: function (map) {
-        map.getPanes().overlayPane.removeChild(this._image);
+        map.getPanes()[this.options.pane].removeChild(this._image);
 
         map.off('moveend', this._reset, this);
 
